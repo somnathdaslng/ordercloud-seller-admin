@@ -1,0 +1,691 @@
+[
+  {
+    "group": "Product",
+    "label": "X% off product Y",
+    "isLineItemLevel": true,
+    "variables": [
+      {
+        "label": "Percent Discount",
+        "ordercloudProperty": "LineItem.LineSubtotal",
+        "token": "PERCENT_DISCOUNT",
+        "transformFunctionName": "divideBy100",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "Product",
+        "ordercloudProperty": "LineItem.Product.ID",
+        "token": "PRODUCT",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      }
+    ],
+    "eligibleExpressionQuery": {
+      "rules": [
+        {
+          "id": "1",
+          "field": "LineItem.Product.ID",
+          "operator": "=",
+          "valueSource": "value",
+          "value": "PRODUCT",
+          "modelPath": "LineItem.Product",
+          "modelName": "Product"
+        }
+      ],
+      "id": "2",
+      "operator": ""
+    },
+    "valueExpressionQuery": {
+      "rules": [
+        {
+          "id": "1",
+          "field": "LineItem.LineSubtotal",
+          "operator": "*",
+          "valueSource": "value",
+          "value": "PERCENT_DISCOUNT",
+          "modelPath": "LineItem",
+          "modelName": "Line Item"
+        }
+      ],
+      "id": "2"
+    }
+  },
+  {
+    "group": "Product",
+    "label": "$X off product Y",
+    "variables": [
+      {
+        "label": "Discount Amount",
+        "ordercloudProperty": "LineItem.LineSubtotal",
+        "token": "DISCOUNT_AMOUNT",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "Product",
+        "ordercloudProperty": "LineItem.Product.ID",
+        "token": "PRODUCT",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      }
+    ],
+    "isLineItemLevel": true,
+    "eligibleExpressionQuery": {
+      "rules": [
+        {
+          "id": "1",
+          "field": "LineItem.Product.ID",
+          "operator": "=",
+          "valueSource": "value",
+          "value": "PRODUCT",
+          "modelPath": "LineItem.Product",
+          "modelName": "Product"
+        }
+      ],
+      "id": "2",
+      "operator": ""
+    },
+    "valueExpressionQuery": {
+      "rules": [
+        {
+          "id": "1",
+          "field": ".number",
+          "operator": "=",
+          "valueSource": "value",
+          "value": "DISCOUNT_AMOUNT",
+          "modelPath": "",
+          "modelName": "Value"
+        }
+      ],
+      "id": "2"
+    }
+  },
+  {
+    "group": "Category",
+    "label": "X% off products in category Y",
+    "isLineItemLevel": true,
+    "variables": [
+      {
+        "label": "Percent Discount",
+        "ordercloudProperty": "LineItem.LineSubtotal",
+        "token": "PERCENT_DISCOUNT",
+        "transformFunctionName": "divideBy100",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "Category",
+        "ordercloudProperty": "LineItem.Product.Category",
+        "token": "CATEGORY",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "Catalog",
+        "ordercloudProperty": "LineItem.Product.Category",
+        "token": "CATEGORY__PARENT",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": false
+      }
+    ],
+    "eligibleExpressionQuery": {
+      "rules": [
+        {
+          "id": "1",
+          "field": "LineItem.Product.Category",
+          "operator": "=",
+          "valueSource": "value",
+          "value": "CATEGORY",
+          "parentValue": "CATEGORY__PARENT",
+          "modelPath": "LineItem.Product",
+          "modelName": "Product"
+        }
+      ]
+    },
+    "valueExpressionQuery": {
+      "rules": [
+        {
+          "id": "2",
+          "field": "LineItem.LineSubtotal",
+          "operator": "*",
+          "valueSource": "value",
+          "value": "PERCENT_DISCOUNT",
+          "modelPath": "LineItem",
+          "modelName": "Line Item"
+        }
+      ],
+      "id": "4"
+    }
+  },
+  {
+    "group": "Category",
+    "label": "$X off products in category Y",
+    "isLineItemLevel": true,
+    "variables": [
+      {
+        "label": "Discount Amount",
+        "ordercloudProperty": "LineItem.LineSubtotal",
+        "token": "DISCOUNT_AMOUNT",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "Category",
+        "ordercloudProperty": "LineItem.Product.Category",
+        "token": "CATEGORY",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      }
+    ],
+    "eligibleExpressionQuery": {
+      "rules": [
+        {
+          "id": "1",
+          "field": "LineItem.Product.Category",
+          "operator": "=",
+          "valueSource": "value",
+          "value": "CATEGORY",
+          "parentValue": "CATEGORY__PARENT",
+          "modelPath": "LineItem.Product",
+          "modelName": "Product"
+        }
+      ]
+    },
+    "valueExpressionQuery": {
+      "rules": [
+        {
+          "id": "1",
+          "field": ".number",
+          "operator": "=",
+          "valueSource": "value",
+          "value": "DISCOUNT_AMOUNT",
+          "modelPath": "",
+          "modelName": "Value"
+        }
+      ],
+      "id": "2"
+    }
+  },
+  {
+    "group": "Shipping",
+    "label": "Free shipping on orders over $X",
+    "isLineItemLevel": false,
+    "variables": [
+      {
+        "label": "Free shipping order minimum",
+        "ordercloudProperty": "Order.Total",
+        "token": "FREE_SHIPPING_ORDER_MINIMUM",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      }
+    ],
+    "eligibleExpressionQuery": {
+      "rules": [
+        {
+          "id": "e11ed31b-a05c-48a8-b506-5b15db7b7f37",
+          "field": "Order.Subtotal",
+          "operator": ">",
+          "valueSource": "value",
+          "value": "FREE_SHIPPING_ORDER_MINIMUM",
+          "modelPath": "Order",
+          "modelName": "Order"
+        }
+      ]
+    },
+    "valueExpressionQuery": {
+      "rules": [
+        {
+          "id": "2",
+          "field": "Order.ShippingCost",
+          "operator": "value",
+          "valueSource": "value",
+          "value": "",
+          "modelPath": "Order",
+          "modelName": "Order"
+        }
+      ]
+    }
+  },
+  {
+    "group": "Bundle",
+    "label": "Buy X, Get Y, for Z% off",
+    "isLineItemLevel": false,
+    "variables": [
+      {
+        "label": "Buy Product",
+        "ordercloudProperty": "LineItem.Product.ID",
+        "token": "BUY_PRODUCT",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "Buy Product Quantity",
+        "ordercloudProperty": "LineItem.Quantity",
+        "token": "BUY_PRODUCT_QUANTITY",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "Get Product",
+        "ordercloudProperty": "LineItem.Product.ID",
+        "token": "GET_PRODUCT",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "Get Product Quantity",
+        "ordercloudProperty": "LineItem.Quantity",
+        "token": "GET_PRODUCT_QUANTITY",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "Percent Discount",
+        "ordercloudProperty": "LineItem.LineSubtotal",
+        "token": "PERCENT_DISCOUNT",
+        "transformFunctionName": "divideBy100",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "",
+        "ordercloudProperty": "",
+        "token": "ELIGIBLE_EXPRESSION",
+        "transformFunctionName": "bundleEligibleExpression",
+        "value": "",
+        "captureUserInput": false
+      }
+    ],
+    "eligibleExpressionQuery": "ELIGIBLE_EXPRESSION",
+    "valueExpressionQuery": {
+      "rules": [
+        {
+          "id": "1",
+          "rules": [
+            {
+              "id": "2",
+              "rules": [
+                {
+                  "id": "3",
+                  "field": "LineItem.Product.ID",
+                  "operator": "=",
+                  "valueSource": "value",
+                  "value": "GET_PRODUCT",
+                  "modelPath": "LineItem.Product",
+                  "modelName": "Product"
+                }
+              ],
+              "not": false,
+              "operator": "items.total"
+            },
+            "/",
+            {
+              "id": "4",
+              "rules": [
+                {
+                  "id": "5",
+                  "field": "LineItem.Product.ID",
+                  "operator": "=",
+                  "valueSource": "value",
+                  "value": "GET_PRODUCT",
+                  "modelPath": "LineItem.Product",
+                  "modelName": "Product"
+                }
+              ],
+              "not": false,
+              "operator": "items.quantity"
+            }
+          ],
+          "not": false
+        },
+        "*",
+        {
+          "id": "6",
+          "field": ".number",
+          "operator": "=",
+          "valueSource": "value",
+          "value": "GET_PRODUCT_QUANTITY",
+          "modelPath": "",
+          "modelName": "Value"
+        },
+        "*",
+        {
+          "id": "7",
+          "field": ".number",
+          "operator": "=",
+          "valueSource": "value",
+          "value": "PERCENT_DISCOUNT",
+          "modelPath": "",
+          "modelName": "Value"
+        }
+      ],
+      "id": "root"
+    }
+  },
+  {
+    "group": "Bundle",
+    "label": "Buy X, Get Y, for $Z off",
+    "isLineItemLevel": false,
+    "variables": [
+      {
+        "label": "Buy Product",
+        "ordercloudProperty": "LineItem.Product.ID",
+        "token": "BUY_PRODUCT",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "Buy Product Quantity",
+        "ordercloudProperty": "LineItem.Quantity",
+        "token": "BUY_PRODUCT_QUANTITY",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "Get Product",
+        "ordercloudProperty": "LineItem.Product.ID",
+        "token": "GET_PRODUCT",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "Get Product Quantity",
+        "ordercloudProperty": "LineItem.Quantity",
+        "token": "GET_PRODUCT_QUANTITY",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "Money Discount",
+        "ordercloudProperty": "LineItem.LineSubtotal",
+        "token": "MONEY_DISCOUNT",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "",
+        "ordercloudProperty": "",
+        "token": "ELIGIBLE_EXPRESSION",
+        "transformFunctionName": "bundleEligibleExpression",
+        "value": "",
+        "captureUserInput": false
+      }
+    ],
+    "eligibleExpressionQuery": "ELIGIBLE_EXPRESSION",
+    "valueExpressionQuery": {
+      "rules": [
+        {
+          "id": "1",
+          "field": ".number",
+          "operator": "=",
+          "valueSource": "value",
+          "value": "GET_PRODUCT_QUANTITY",
+          "modelPath": "",
+          "modelName": "Value"
+        },
+        "*",
+        {
+          "id": "2",
+          "field": ".number",
+          "operator": "=",
+          "valueSource": "value",
+          "value": "MONEY_DISCOUNT",
+          "modelPath": "",
+          "modelName": "Value"
+        }
+      ],
+      "id": "root"
+    }
+  },
+  {
+    "group": "Bundle",
+    "label": "Buy from category X, Get from category Y, for Z% off",
+    "isLineItemLevel": false,
+    "variables": [
+      {
+        "label": "Buy from category",
+        "ordercloudProperty": "LineItem.Product.Category",
+        "token": "BUY_CATEGORY",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "Buy from catalog",
+        "ordercloudProperty": "LineItem.Product.Category",
+        "token": "BUY_CATEGORY__PARENT",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": false
+      },
+      {
+        "label": "Buy Quantity",
+        "ordercloudProperty": "LineItem.Quantity",
+        "token": "BUY_PRODUCT_QUANTITY",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "Get from category",
+        "ordercloudProperty": "LineItem.Product.Category",
+        "token": "GET_CATEGORY",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "Get from catalog",
+        "ordercloudProperty": "LineItem.Product.Category",
+        "token": "GET_CATEGORY__PARENT",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": false
+      },
+      {
+        "label": "Get Quantity",
+        "ordercloudProperty": "LineItem.Quantity",
+        "token": "GET_PRODUCT_QUANTITY",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "Percent Discount",
+        "ordercloudProperty": "LineItem.LineSubtotal",
+        "token": "PERCENT_DISCOUNT",
+        "transformFunctionName": "divideBy100",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "",
+        "ordercloudProperty": "",
+        "token": "ELIGIBLE_EXPRESSION",
+        "transformFunctionName": "bundleCategoryEligibleExpression",
+        "value": "",
+        "captureUserInput": false
+      }
+    ],
+    "eligibleExpressionQuery": "ELIGIBLE_EXPRESSION",
+    "valueExpressionQuery": {
+      "rules": [
+        {
+          "id": "1",
+          "rules": [
+            {
+              "id": "2",
+              "rules": [
+                {
+                  "id": "3",
+                  "field": "LineItem.Product.Category",
+                  "operator": "=",
+                  "valueSource": "value",
+                  "value": "GET_CATEGORY",
+                  "parentValue": "GET_CATEGORY__PARENT",
+                  "modelPath": "LineItem.Product",
+                  "modelName": "Product"
+                }
+              ],
+              "not": false,
+              "operator": "items.total"
+            },
+            "/",
+            {
+              "id": "4",
+              "rules": [
+                {
+                  "id": "5",
+                  "field": "LineItem.Product.Category",
+                  "operator": "=",
+                  "valueSource": "value",
+                  "value": "GET_CATEGORY",
+                  "parentValue": "GET_CATEGORY__PARENT",
+                  "modelPath": "LineItem.Product",
+                  "modelName": "Product"
+                }
+              ],
+              "not": false,
+              "operator": "items.quantity"
+            }
+          ],
+          "not": false
+        },
+        "*",
+        {
+          "id": "6",
+          "field": ".number",
+          "operator": "=",
+          "valueSource": "value",
+          "value": "GET_PRODUCT_QUANTITY",
+          "modelPath": "",
+          "modelName": "Value"
+        },
+        "*",
+        {
+          "id": "7",
+          "field": ".number",
+          "operator": "=",
+          "valueSource": "value",
+          "value": "PERCENT_DISCOUNT",
+          "modelPath": "",
+          "modelName": "Value"
+        }
+      ],
+      "id": "root"
+    }
+  },
+  {
+    "group": "Bundle",
+    "label": "Buy from category X, Get from category Y, for $Z off",
+    "isLineItemLevel": false,
+    "variables": [
+      {
+        "label": "Buy from category",
+        "ordercloudProperty": "LineItem.Product.Category",
+        "token": "BUY_CATEGORY",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "Buy from catalog",
+        "ordercloudProperty": "LineItem.Product.Category",
+        "token": "BUY_CATEGORY__PARENT",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": false
+      },
+      {
+        "label": "Buy Quantity",
+        "ordercloudProperty": "LineItem.Quantity",
+        "token": "BUY_PRODUCT_QUANTITY",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "Get from category",
+        "ordercloudProperty": "LineItem.Product.Category",
+        "token": "GET_CATEGORY",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "Get from catalog",
+        "ordercloudProperty": "LineItem.Product.Category",
+        "token": "GET_CATEGORY__PARENT",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": false
+      },
+      {
+        "label": "Get Quantity",
+        "ordercloudProperty": "LineItem.Quantity",
+        "token": "GET_PRODUCT_QUANTITY",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "Money Discount",
+        "ordercloudProperty": "LineItem.LineSubtotal",
+        "token": "MONEY_DISCOUNT",
+        "transformFunctionName": "",
+        "value": "",
+        "captureUserInput": true
+      },
+      {
+        "label": "",
+        "ordercloudProperty": "",
+        "token": "ELIGIBLE_EXPRESSION",
+        "transformFunctionName": "bundleCategoryEligibleExpression",
+        "value": "",
+        "captureUserInput": false
+      }
+    ],
+    "eligibleExpressionQuery": "ELIGIBLE_EXPRESSION",
+    "valueExpressionQuery": {
+      "rules": [
+        {
+          "id": "1",
+          "field": ".number",
+          "operator": "=",
+          "valueSource": "value",
+          "value": "GET_PRODUCT_QUANTITY",
+          "modelPath": "",
+          "modelName": "Value"
+        },
+        "*",
+        {
+          "id": "2",
+          "field": ".number",
+          "operator": "=",
+          "valueSource": "value",
+          "value": "MONEY_DISCOUNT",
+          "modelPath": "",
+          "modelName": "Value"
+        }
+      ],
+      "id": "root"
+    }
+  }
+]

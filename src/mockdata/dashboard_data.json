@@ -1,0 +1,40 @@
+{
+  "salesoverview": {
+    "title": "Sales Overview",
+    "subtitle": "Year to Date Sales",
+    "percentchange": 5,
+    "percentchangeindicator": "+",
+    "series": {
+      "currentyear": {
+        "title": "Current years sales",
+        "data": [130, 140, 415, 510, 149, 160, 170, 391, 130, 410, 451, 501]
+      },
+      "previousyear": {
+        "title": "Previous years sales",
+        "data": [30, 40, 115, 310, 249, 60, 70, 191, 110, 210, 151, 101]
+      }
+    }
+  },
+  "uniqueusers": {
+    "totalamount": 53,
+    "previoustotalamount": 40
+  },
+  "todaysmoney": {
+    "totalamount": 2500,
+    "previoustotalamount": 1100
+  },
+  "weeksales": {
+    "totalamount": 5500,
+    "previoustotalamount": 1400
+  },
+  "newusers": {
+    "totalamount": 24,
+    "previoustotalamount": 170
+  },
+  "totalpromos": {
+    "totalamount": 15
+  },
+  "totalproducts": {
+    "totalamount": 7560
+  }
+}
